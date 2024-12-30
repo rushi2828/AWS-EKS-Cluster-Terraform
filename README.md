@@ -17,7 +17,7 @@ Terraform is an Infrastructure-as-Code (IaC) tool that enables you to define and
 ## Prerequisites
 
 1. **Terraform**: Installed on your local machine. You can set it up following this [guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli).
-2. **AWS Account**: You’ll need an AWS account to access AWS EKS and other services. If you don’t have one, sign up [here](https://signin.aws.amazon.com/signin).
+2. **AWS Account**: You’ll need an AWS account to access AWS EKS and other services. If you don’t have one, sign up [here](https://signin.aws.amazon.com/signup?request_type=register).
 3. **AWS CLI**: Installed and configured with your AWS credentials.
 4. **kubectl**: Installed to manage your EKS cluster from your machine.
 
