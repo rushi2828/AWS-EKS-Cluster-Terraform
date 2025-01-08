@@ -32,7 +32,7 @@ Terraform is an Infrastructure-as-Code (IaC) tool that enables you to define and
 7. [Deploy an Application Using Terraform](#deploy-an-application-using-terraform)
 8. [Clean Up](#clean-up)
 
-## 1. Define the AWS Provider (main.tf)
+## Define the AWS Provider (main.tf)
 
 Create main.tf file and add the following configuration:
 
@@ -42,7 +42,7 @@ provider "aws" {
 }
 
 ```
-## 2. Define the VPC and Networking Resources (network.tf)
+## Define the VPC and Networking Resources
 
 AWS EKS requires a Virtual Private Cloud (VPC) and subnets to run.
 Add the configuration to the network.tf file. This will create a VPC, subnets, an internet gateway and route tables for your EKS cluster.
@@ -82,9 +82,9 @@ count = 2
 }
 
 ```
-## 3. Define the EKS Cluster (eks.tf)
+## Define the EKS Cluster
 
-Let's create the EKS cluster itself, along with the required IAM role to manage the cluster.
+Let's create the EKS cluster itself, along with the required IAM role to manage the cluster in eks.tf
 
 ```
 resource "aws_iam_role" "eks_role" {
@@ -139,7 +139,7 @@ resource "aws_eks_cluster" "eks_cluster" {
 - The EKS cluster needs an IAM role that grants it permissions to manage AWS services. Therefore, we attach eks_role with the necessary policies to EKS.
 - We also create an EKS cluster using aws_eks_cluster and specify the VPC subnets created earlier.
 
-## 5. Create EKS Worker Nodes (eks-workers.tf)
+## Create EKS Worker Nodes
 Create eks-workers.tf file. This will create a node group that will scale between 1 to 3 nodes.
 
 ```
@@ -159,7 +159,7 @@ resource "aws_eks_node_group" "node_group" {
 - We define an EKS node group, which is a set of EC2 instances (worker nodes) that run the Kubernetes workloads.
 - The node group can scale between 1 and 3 nodes, depending on your workload's demand.
 
-## 6. Apply the Terraform Configuration
+## Apply the Terraform Configuration
 - Initialize terraform
 
 ```
@@ -185,7 +185,7 @@ Confirm with yes when prompted.
   ![image](https://github.com/user-attachments/assets/c5013eaf-4018-4b1d-9138-02c0ab36b1ef)
 
 
-## 7.Configure kubectl to Access the EKS Cluster
+## Configure kubectl to Access the EKS Cluster
 To manage the EKS cluster, we need to configure kubectl. This can be done using the AWS CLI.
 
 ```
@@ -196,8 +196,8 @@ aws eks --region eu-west-2 update-kubeconfig --name eks-cluster
 - Confirm that you have access to the EKS cluster by listing Kubernetes nodes and services.
 ![image](https://github.com/user-attachments/assets/1c9821e8-c6e7-4059-af37-481331a02fb2)
 
-## 8.Deploy an Application Using Terraform (deploy-nginx.tf)
-Let’s deploy a simple Nginx application to the EKS cluster using the Kubernetes provider in Terraform.
+## Deploy an Application Using Terraform
+Let’s deploy a simple Nginx application to the EKS cluster using the Kubernetes provider in Terraform (deploy-nginx.tf)
 
 ```
 provider "kubernetes" {
@@ -281,7 +281,7 @@ kubectl get svc
 
 ![image](https://github.com/user-attachments/assets/7ee0c728-e9a3-4622-b4d9-7f9fcf61084c)
 
-## 9. Clean Up 
+## Clean Up 
 If you no longer need all these resources, you can destroy them all to avoid unnecessary charges.
 ```
 terraform destroy
