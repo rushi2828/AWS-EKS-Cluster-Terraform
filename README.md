@@ -32,7 +32,7 @@ Terraform is an Infrastructure-as-Code (IaC) tool that enables you to define and
 7. [Deploy an Application Using Terraform](#deploy-an-application-using-terraform)
 8. [Clean Up](#clean-up)
 
-## Define the AWS Provider (main.tf)
+## Define the AWS Provider
 
 Create main.tf file and add the following configuration:
 
